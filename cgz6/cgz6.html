@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/element-ui/index.css">
+    <link rel="stylesheet" href="css/cgz6.css">
+    <script src="js/echarts/echarts-all.js"></script>
+</head>
+<body>
+    <div id="cgz6">
+        <el-row>
+            <!--============================================顶部============================================-->
+            <el-row >
+            <el-col :span="24" class="navFixation" :offset="2">
+                <el-row class="inputOne">
+                    <el-col :span="4">
+                            <el-input v-model="parameters.Superheater" readonly >
+                                <template slot="prepend"><b>过热器壁温</b></template>
+                                <template slot="append"><b>&nbsp;℃</b></template>
+                            </el-input>
+                    </el-col>
+                    <el-col :span="4">
+                        <el-input v-model="parameters.pressure" readonly>
+                            <template slot="prepend"><b>主蒸汽压力</b></template>
+                            <template slot="append"><b>MPa</b></template>
+                        </el-input>
+                    </el-col>
+                    <el-col :span="4">
+                        <el-input v-model="parameters.gasTemperature" readonly>
+                            <template slot="prepend"><b>主蒸汽温度</b></template>
+                            <template slot="append"><b>℃</b></template>
+                        </el-input>
+                    </el-col>
+                    <el-col :span="4">
+                        <el-input v-model="parameters.drawdown" readonly>
+                            <template slot="prepend"><b>汽包水位&nbsp;&nbsp;&nbsp;</b></template>
+                            <template slot="append"><b>mm</b></template>
+                        </el-input>
+                    </el-col>
+                    <el-col :span="4">
+                        <el-input v-model="parameters.WallTemperature" readonly>
+                            <template slot="prepend"><b>上下壁温差&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></template>
+                            <template slot="append"><b>℃</b></template>
+                        </el-input>
+                    </el-col>
+                </el-row>
+                <el-row class="inputTwo">
+                    <el-col :span="4">
+                        <el-input v-model="parameters.negativePressure" readonly>
+                            <template slot="prepend"><b>炉膛负压&nbsp;&nbsp;&nbsp;</b></template>
+                            <template slot="append"><b>Pa</b></template>
+                        </el-input>
+                    </el-col>
+                    <el-col :span="4">
+                        <el-input v-model="parameters.smokeTemperature" readonly>
+                            <template slot="prepend"><b>排烟温度&nbsp;&nbsp;&nbsp;</b></template>
+                            <template slot="append"><b>&nbsp;&nbsp;&nbsp;&nbsp;℃</b></template>
+                        </el-input>
+                    </el-col>
+                    <el-col :span="4">
+                        <el-input v-model="parameters.gas" readonly>
+                            <template slot="prepend"><b>过剩氧量&nbsp;&nbsp;&nbsp;</b></template>
+                            <template slot="append"><b>%</b></template>
+                        </el-input>
+                    </el-col>
+                    <el-col :span="4">
+                        <el-input v-model="parameters.waterQuantity" readonly>
+                            <template slot="prepend"><b>给水流量&nbsp;&nbsp;&nbsp;</b></template>
+                            <template slot="append"><b>&nbsp;&nbsp;t/h</b></template>
+                        </el-input>
+                    </el-col>
+                    <el-col :span="4">
+                        <el-input v-model="parameters.exportTemperature" readonly>
+                            <template slot="prepend"><b>炉膛出口烟温&nbsp;</b></template>
+                            <template slot="append"><b>℃</b></template>
+                        </el-input>
+                    </el-col>
+                </el-row>
+
+            </el-col>
+            </el-row>
+
+            <!--==================计时器=============-->
+            <el-row>
+                <el-col class="changeTime" v-if="changeTime">
+                    <b>曲线变化（自动）：</b><br>
+                    <b id="times"></b>
+                </el-col>
+            </el-row>
+            <!--==================燃料同操器悬浮=============-->
+            <el-row>
+
+                <el-row>
+                    <el-col :span="2" class="gumposition" >
+                        <el-row>
+                            <el-input class="gum"
+                                      v-model="parameters.gum" size="mini" readonly>
+                                <template slot="append">kg</template>
+                            </el-input>
+                        </el-row>
+                        <el-row class="FuelAerobics">
+                            <el-col :span="24">
+                                <div v-for="FuelAerobic in FuelAerobics"
+                                >
+                                    <img :src="FuelAerobic.FuelAerobicUrl"
+                                         :key="FuelAerobic.FuelAerobicID"
+                                         :style="{'top':FuelAerobic.top,'left':FuelAerobic.left,
+                                       }"
+                                         class="FuelAerobicIMG"
+                                         @click="FuelAerobicfun(FuelAerobic)"
+                                    >
+                                </div>
+                                <div class="FuelAerobicsFont">燃料同操器</div>
+                            </el-col>
+                        </el-row>
+
+                    </el-col>
+                </el-row>
+            </el-row>
+        <!--============================================内容============================================-->
+            <el-row class="content">
+            <el-button type="warning" @click="countsFF()" style="position: fixed;left: 20px">提交</el-button>
+                <el-col :span="24">
+                    <el-row style="margin: 0 auto;width: 80%">
+                        <!--============================================燃烧调节系统============================================-->
+                        <el-col :span="10">
+                            <!--==================排粉机=============-->
+                            <el-row class="portal">
+
+                                <el-col :span="24">
+                                    <img :src="combustionRegulationComboImg" class="combustionRegulationImg">
+                                </el-col>
+                                <div v-for="systems in Combustionregulationsystem">
+                                    <img :src="systems.systemUrl" class="systems"
+                                         :key="systems.systemID"
+                                         :style="{'top':systems.top,'left':systems.left,
+                                       }"
+                                         @click="portalIndex(systems)">
+                                </div>
+                                <!--==================模态框======================-->
+                                <el-dialog :visible.sync="dialogmillFan1" :before-close="handleClose">
+                                    <div slot="title" class="dialogTitles">
+                                        <b>{{systemTitle}}</b>
+                                    </div><br>
+                                    <b>{{dialogcontent}}</b>
+                                    <el-select v-model="optionsMillFan1"
+                                               placeholder="请选择"
+                                               v-if="displayMillFan1">
+                                        <el-option
+                                                v-for="MillFanOption in FeedwaterOption"
+                                                :key="MillFanOption.optionsValue"
+                                                :label="MillFanOption.label"
+                                                :value="MillFanOption.optionsValue">
+                                        </el-option>
+                                    </el-select>
+                                    <!--==========送风挡板=======-->
+                                    <el-select v-model="optionsValue" placeholder="请选择" v-if="displaySelect">
+                                        <el-option
+                                                v-for="inletValveOption in FeedwaterOption"
+                                                :key="inletValveOption.optionsValue"
+                                                :label="inletValveOption.label"
+                                                :value="inletValveOption.optionsValue">
+                                        </el-option>
+                                    </el-select>
+                                    <!--==========引风挡板=======-->
+                                    <el-select v-model="optionsExport" placeholder="请选择" v-if="displayExport">
+                                        <el-option
+                                                v-for="ExportValveOption in FeedwaterOption"
+                                                :key="ExportValveOption.optionsValue"
+                                                :label="ExportValveOption.label"
+                                                :value="ExportValveOption.optionsValue">
+                                        </el-option>
+                                    </el-select>
+                                    <div slot="footer">
+                                        <el-button @click="millImgdisconfirms()">取消</el-button>
+                                        <el-button type="warning" @click="millImgconfirms()">确定</el-button>
+                                    </div>
+                                </el-dialog>
+                            </el-row>
+
+                        </el-col>
+                        <!--============================================曲线图============================================-->
+                        <el-col :span="14">
+                            <div class="charts">
+                                <div id="curve"></div>
+                                <b style="position: absolute;top: 360px;left:40px">(点火)</b>
+                                <!--倍数-->
+                                <div v-for="doubleImg in doubleNums" :key="doubleImg.doubleNumID">
+                                    <img :src="doubleImg.doubleNumUrl" class="doubleImg"
+                                         :style="{ 'top':doubleImg.top,'left':doubleImg.left}"
+                                         @click="doubleIndex(doubleImg)" v-if="doubleImg.display">
+                                </div>
+                            </div>
+                        </el-col>
+                    </el-row>
+                    <hr style="width: 70%;;border:none;border-top:1px dashed orange">
+                    <el-row class="hotCombos">
+                        <!--=========================================点火装置=================================-->
+                        <el-col :span="24">
+                            <el-col :span="12">
+                                <div class="hotComboImg"
+                                     v-for="hots in hotComboImg"
+                                     :key="hots.hotID">
+                                    <img :src="hots.hotComboImgUrl" class="hotImg">
+                                </div>
+                            </el-col>
+                            <!--=========点火枪============-->
+                            <div v-for="hotpartImg in hotpartImgs">
+                                <img :src="hotpartImg.hotpartImgUrl" class="hotpartImg"
+                                     :style="{'top':hotpartImg.top,'left':hotpartImg.left}"
+                                     @click="dialogHotparts(hotpartImg)">
+                            </div>
+                            <el-dialog :visible.sync="dialogHotpart" :before-close="handleClose">
+                                <div slot="title" class="dialogTitles">
+                                    <b>{{Hotparttitle}}</b>
+                                </div>
+                                    <b>{{hotsRadiotitle}}</b>
+                                    <el-radio-group v-model="radioHotpart" v-if="radioHotpartshow">
+                                        <el-radio :label="true">点火</el-radio>
+                                        <el-radio :label="false">熄火</el-radio>
+                                    </el-radio-group>
+                                <el-radio-group v-model="radioOilgun" v-if="Oilgunshow">
+                                    <el-radio :label="true">开启</el-radio>
+                                    <el-radio :label="false">关闭</el-radio>
+                                </el-radio-group>
+                                <div slot="footer">
+                                    <el-button @click="dishotpartfun()">取消</el-button>
+                                    <el-button type="warning" @click="hotpartfun()">确定</el-button>
+                                </div>
+
+                            </el-dialog>
+                        </el-col>
+                    </el-row>
+
+
+                    <el-row class="gasWaters">
+                        <!--============================================锅炉汽水系统============================================-->
+                        <el-col :span="24" >
+                            <div class="gasWaterComboImg"
+                                 v-for="item in gasWaterComboImg"
+                                 :key="item.gasWaterID">
+                                <img :src="item.gasWaterComboImgUrl" class="gasWaterImg">
+
+
+                                <!--=================部件============================-->
+                                <div v-for="blueBtn in blueBtns" :key="blueBtn.blueBtnID">
+                                    <img :src="blueBtn.blueBtnUrl" class="blueBtnImg"
+                                         :style="{'top':blueBtn.top,'left':blueBtn.left}"
+                                         @click="assemblyIndex(blueBtn)">
+                                </div>
+                                <div v-for="assembly in assemblys" :key="assembly.assemblyID">
+                                    <img :src="assembly.assemblyUrl" class="assemblyImg"
+                                         :style="{'top':assembly.top,'left':assembly.left}"
+                                         @click="assemblyIndex(assembly)">
+                                </div>
+                                <img :src="feedwater.feedwaterUrl"
+                                     :key="feedwater.feedwaterID"
+                                     class="feedwater"
+                                     :style="{'top':feedwater.top,'left':feedwater.left}"
+                                     @click="assemblyIndex(feedwater)">
+                            </div>
+                        </el-col>
+
+                        <el-dialog :visible.sync="dialogAssembly" :before-close="handleClose">
+                            <div slot="title" class="dialogTitles">
+                                <b>{{AssemblyTitle}}</b>
+                            </div>
+                            <!--=======================按钮+汽包部件模态框内容=============================-->
+                            <div v-if="btnDiv">
+                                    <el-checkbox v-for="btnCheckbox in btnCheckboxs"
+                                                 :label="btnCheckbox.btnname"
+                                                 :key="btnCheckbox.btnCheckboxID"
+                                                 v-if="btnCheckbox.display"
+                                                 v-model="btnCheckbox.checked">{{btnCheckbox.btnname}}</el-checkbox>
+                                <b v-if="evenyoneTitleshow">{{evenyoneTitle}}</b>
+                                <el-radio-group v-model="continuousBlowdown" v-if="Blowdownshow">
+                                    <el-radio :label="true">开启</el-radio>
+                                    <el-radio :label="false">关闭</el-radio>
+                                </el-radio-group>
+                                <div v-if="inputtext">
+                                    <el-input
+                                            v-for="inputs in inputTextarea"
+                                            type="textarea"
+                                            :rows="4"
+                                            :placeholder="inputs.placeholder"
+                                            :key="inputs.textareaID"
+                                            v-model="inputs.inputText"
+                                            id="inputs.textareaID"
+                                            v-if="inputs.textareashow">
+                                    </el-input>
+                                </div>
+                                <!--=====================壁温================-->
+                                <div v-if="displayWallTemperature">
+                                    <b>{{WallTemperaturetitle}}</b>
+                                    <el-select v-model="WallTemperatureNum">
+                                        <el-option
+                                                v-for="WallTemperature in FeedwaterOption"
+                                                :key="WallTemperature.optionsValue"
+                                                :label="WallTemperature.label"
+                                                :value="WallTemperature.optionsValue">
+                                        </el-option>
+                                    </el-select>
+                                </div>
+                            </div>
+
+                            <!--=======================图案部件模态框内容==============================-->
+                            <div v-for="radioValue in assemblys" v-if="picDiv">
+                                <div v-if="radioValue.display">
+                                    <b>{{airCondition}}</b>
+                                    <el-radio-group v-model="radioValue.airValve"
+                                                    :key="radioValue.assemblyID" >
+                                        <el-radio :label="true">开启</el-radio>
+                                        <el-radio :label="false">关闭</el-radio>
+                                    </el-radio-group>
+                                </div>
+                                <div v-if="radioValue.display">
+                                    <b>{{waterCondition}}</b>
+                                    <el-radio-group v-model="radioValue.trap"
+                                                    :key="radioValue.assemblyID">
+                                        <el-radio :label="true">开启</el-radio>
+                                        <el-radio :label="false">关闭</el-radio>
+                                    </el-radio-group>
+                                </div>
+
+                            </div>
+
+                            <!--=============给水====================-->
+                            <div v-if="displayFeedwater">
+                                <b>{{Feedwatertitle}}</b>
+                                <el-select v-model="optionsFeedwater">
+                                    <el-option
+                                            v-for="Feedwaters in FeedwaterOption"
+                                            :key="Feedwaters.optionsValue"
+                                            :label="Feedwaters.label"
+                                            :value="Feedwaters.optionsValue">
+                                    </el-option>
+                                </el-select>
+                            </div>
+
+                            <div slot="footer">
+                                <el-button @click="assemblyDisConfirms()">取消</el-button>
+                                <el-button type="warning" @click="assemblyConfirms()">确定</el-button>
+                            </div>
+                        </el-dialog>
+                    </el-row>
+
+
+                </el-col>
+            </el-row>
+
+        </el-row>
+    </div>
+    <script src="js/vue/vue.js"></script>
+    <script src="js/vue/vue-resource.js"></script>
+    <script src="js/element-ui/index.js"></script>
+    <script src="js/cgz6-service.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
+</body>
+</html>

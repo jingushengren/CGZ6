@@ -1,0 +1,92 @@
+﻿/*@media (min-width: 1024px) {html{font-size: 18px}}
+@media (min-width: 1100px) {html{font-size: 20px}}
+@media (min-width: 1280px) {html{font-size: 22px;}}
+@media (min-width: 1366px) {html{font-size: 24px;}}
+@media (min-width: 1440px) {html{font-size: 25px !important;}}
+@media (min-width: 1680px) {html{font-size: 28px;}}
+@media (min-width: 1920px) {html{font-size: 33px;}}*/
+html,
+body {margin: 0;width: 100%;overflow: auto}
+.navFixation{
+    position: fixed;
+    top: 0;
+    z-index: 1;
+}
+.inputOne .el-input__inner,.inputOne .el-input-group__prepend,.inputOne .el-input-group__append{
+    background-color: #4472c4;
+    color: white;
+}
+.inputTwo .el-input__inner,.inputTwo .el-input-group__prepend,.inputTwo .el-input-group__append{
+    background-color: #cfd5ea;
+    color: black;
+}
+
+.gumposition{
+    position: fixed;
+    z-index: 1;
+    top: 200px;
+    width: 200px;
+    height: 140px;
+    border: #929292 solid 1px;
+
+}
+.gumposition .el-input-group__append,.gumposition .el-input__inner{
+    background-color: #4472c4;
+    color:white;
+}
+.content{
+    margin: 100px auto;
+}
+.FuelAerobics{
+    position: relative;
+}
+.FuelAerobicsFont{
+    position: absolute;
+    top: 40px;left: 50px;
+}
+.gum{
+    font-size: 18px;
+    width: 80%;
+    margin:20px 20px;
+}
+.changeTime{
+    position: fixed;
+    z-index: 2;
+    top:350px;
+}
+#times{
+    color: #ff4d51;
+    font-size: 24px;
+}
+.charts{
+    position: absolute;
+    left: 700px;
+
+}
+.portal,.gasWaterComboImg{
+    position: relative;
+}
+.gasWaters{
+    margin: 30px auto;
+    width: 1000px;
+    height: 632px;
+}
+.hotCombos{
+    margin:0 auto;
+    width: 996px;
+    height: 471px;
+    position: relative;
+}
+.systems,.doubleImg,.assemblyImg,.hotpartImg,.inletValveImg,.blueBtnImg,.FuelAerobicIMG,.feedwater{
+    position: absolute;
+}
+.systems:hover,.doubleImg:hover,.assemblyImg:hover,.feedwater:hover,.hotpartImg:hover,.inletValveImg:hover,.blueBtnImg:hover,.FuelAerobicIMG:hover{
+    background-color: #5daf34;
+    cursor:pointer;
+}
+.dialogTitles{
+    font-size: 16px;
+    border-bottom: #6f7180 1px solid;
+    color: #e87822;
+}
+

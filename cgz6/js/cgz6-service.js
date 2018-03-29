@@ -1,37 +1,5 @@
 const cgz6Data = {
     result: {
-        parameters:{
-            gasQuantity:0,//主蒸汽流量
-            pressure:0,//主蒸汽压力
-            gasTemperature:0,//主蒸汽温度
-            WallTemperature:0,//上下壁温差
-            exportTemperature:0,//炉膛出口烟温
-            Superheater:0,//过热器壁温
-            e:0.1,//文档为给，自定义
-            d:1017.5,
-            drawdown:0,//汽包水位
-            a:2.5,
-            b:10,
-            negativePressure:0,//炉膛负压
-            smokeTemperature:0,//排烟温度
-            gas:0,//过剩氧量
-            waterQuantity:0,//给水流量
-            gum:30,
-            Ht:5000,//焓值
-            g:0.1,//排粉机转速
-            Qd:4000,//燃料低位发热量
-            D:0,//锅炉蒸发量
-            T:0,
-            Q:0,
-            v:0.1,
-            Pz:0,
-            n:63,
-            Af1n:0.8,//送风机阀门开度
-            Af2n:0.8,//引风机阀门开度
-            h:100,
-
-
-        },
         option : {
             title : {
                 text: '冷态升温升压曲线'
@@ -41,17 +9,13 @@ const cgz6Data = {
                 trigger: 'item',
                 formatter: "{a}<br/>{c}"
             },
-            //图例名
-            legend: {
-                data:['主蒸汽温度','主蒸汽压力']
-            },
             //calculable : true,
             xAxis : [//x轴
                 {
                     type: 'value',
                     min:0,
-                    max:240,
-                    splitNumber:6,
+                    max:280,
+                    splitNumber:7,
                     axisLabel: {
                         formatter: '{value} min'
                     }
@@ -67,14 +31,14 @@ const cgz6Data = {
                         }
                     },
                     min:0,
-                    max:320,
+                    max:600,
                     splitNumber:10,
                 },
                 {
                     name:'主蒸汽压力(MPa)',
                     type : 'value',
                     min:0,
-                    max:9.0,
+                    max:15,
                     splitNumber:10,
                     axisLine: {
                         lineStyle: {
@@ -105,6 +69,21 @@ const cgz6Data = {
                         [0, 0]
                     ]
                 },
+                {
+                    name: '主蒸汽温度',
+                    type: 'line',
+                    data: [
+                        [20, 50],[43,149],[70,188],[108,278],[152,310],[185,355],[238,550],[280,550]
+                    ],
+                },
+                {
+                    name:'主蒸汽压力',
+                    type:'line',
+                    yAxisIndex:1,
+                    data:[
+                        [3, 0],[40,0.3],[70,1.1],[120,3.0],[200,4.5],[230,6.75],[240,10.6],[280,10.6]
+                    ]
+                },
             ]
         },
         gasWater:[
@@ -112,50 +91,14 @@ const cgz6Data = {
         ],
         combustionRegulationComboImg:"images/cgz6-combo1.png",
         Combustionregulationsystem:[
-            {systemUrl:"images/cgz6-part0.png",top:"110px",left:"130px",systemID:"part0"},
-            {systemUrl:"images/cgz6-part1.png",top:"110px",left:"480px",systemID:"part1"},
-            {systemUrl:"images/cgz6-part15.png",top:"305px",left:"142px",systemID:"part15"},
-            {systemUrl:"images/cgz6-part16.png",top:"300px",left:"238px",systemID:"part16"},
+            {systemUrl:"images/cgz6-part0.png",top:"110px",left:"230px",systemID:"part0"},
+            {systemUrl:"images/cgz6-part1.png",top:"110px",left:"580px",systemID:"part1"},
+            {systemUrl:"images/cgz6-part15.png",top:"355px",left:"103px",systemID:"part15"},
+            {systemUrl:"images/cgz6-part16.png",top:"347px",left:"535px",systemID:"part16"},
         ],
         FuelAerobics:[
             {FuelAerobicUrl:"images/cgz6-part18.png",top:"0px",left:"50px",FuelAerobicID:"part18"},
             {FuelAerobicUrl:"images/cgz6-part19.png",top:"0px",left:"90px",FuelAerobicID:"part19"},
-        ],
-        FeedwaterOption:[{
-            optionsValue: 0,
-            label: 0
-        }, {
-            optionsValue: 0.1,
-            label: 0.1
-        }, {
-            optionsValue: 0.2,
-            label: 0.2
-        }, {
-            optionsValue: 0.3,
-            label: 0.3
-        }, {
-            optionsValue: 0.4,
-            label: 0.4
-        },{
-            optionsValue: 0.5,
-            label: 0.5
-        },{
-            optionsValue:0.6,
-            label: 0.6
-        },{
-            optionsValue: 0.7,
-            label: 0.7
-        },{
-            optionsValue: 0.8,
-            label: 0.8
-        },{
-            optionsValue: 0.9,
-            label: 0.9
-        },{
-            optionsValue: 1,
-            label: 1
-        },
-
         ],
         doubleNums:[
             {doubleNumUrl:"images/cgz6-part2.png",top:"100px",left:"0px",doubleNumID:"double1",doubleNumname:"启动6倍速度",display:"true"},
@@ -183,7 +126,7 @@ const cgz6Data = {
             {assemblyUrl:"images/cgz6-part11.png",top:"162px",left:"943px",assemblyID:"part11",assemblyname:"后包墙过热器",airValve:true,trap:true,display:false},
 
         ],
-        feedwater:{feedwaterUrl:"images/cgz6-part17.png",top:"584px",left:"861px",feedwaterID:"part17",feedwatername:"给水",display:false},
+        feedwater:{feedwaterUrl:"images/cgz6-part17.png",top:"530px",left:"410px",feedwaterID:"part17",feedwatername:"给水",display:false},
 
         hotComboImg:[
             {hotComboImgUrl:"images/cgz6-combo2.png",hotID:"hot-1",hotname:"点火装置"}
@@ -201,11 +144,12 @@ const cgz6Data = {
             {hotpartImgUrl:"images/cgz6-part23.png",top:"165px",left:"750px",hotID:"hot-2",hotname:"点火枪"},
             {hotpartImgUrl:"images/cgz6-part23.png",top:"295px",left:"750px",hotID:"hot-2",hotname:"点火枪"},
             {hotpartImgUrl:"images/cgz6-part23.png",top:"340px",left:"750px",hotID:"hot-2",hotname:"点火枪"},
-            {hotpartImgUrl:"images/cgz6-part22.png",top:"122px",left:"114px",hotID:"Oilgun",hotname:"停油枪阀-红"},
-            {hotpartImgUrl:"images/cgz6-part22.png",top:"298px",left:"114px",hotID:"Oilgun",hotname:"停油枪阀-红"},
-            {hotpartImgUrl:"images/cgz6-part22.png",top:"126px",left:"876px",hotID:"Oilgun",hotname:"停油枪阀-红"},
-            {hotpartImgUrl:"images/cgz6-part22.png",top:"295px",left:"877px",hotID:"Oilgun",hotname:"停油枪阀-红"},
-
+        ],
+        hotpic:[
+            {hotpartImgUrl:"images/cgz6-part25.png",top:"150px",left:"320px",hotID:"part25",hotname:"火",display:false,},
+            {hotpartImgUrl:"images/cgz6-part25.png",top:"295px",left:"320px",hotID:"part25",hotname:"火",display:false,},
+            {hotpartImgUrl:"images/cgz6-part26.png",top:"150px",left:"570px",hotID:"part26",hotname:"火",display:false,},
+            {hotpartImgUrl:"images/cgz6-part26.png",top:"295px",left:"570px",hotID:"part26",hotname:"火",display:false,},
         ],
         btnCheckboxs:[
             {btnname:"第一次排污",btnCheckboxID:"checkbox1",display:false,checked:false},
@@ -234,18 +178,46 @@ const cgz6Data = {
         ],
     }
 };
-var airvaluenum=0;
-var randoms = Math.floor((Math.random() * 10 + 1) / 10 * 10) / 10;
-var gaswendu=0;
-var gasqiya=0;
-var dttrue=0;
-var dt=120;
+var ktChange;var waters;var H20;var QiBao;var GuoRe;var QuXian;
+var randoms = Math.random()+Math.random() * 1 + 1;
+var dttrue=0;var dt=120;var randomcount;var H;var G;var P;var lutangPz;
+var guminterval;var ZhengFa;var PaiYan;var sendBtnTimer;
+function randomcout(min,max) {
+    randomcount=parseInt(Math.random()*(max-min+1)+min);
+}
 new Vue({
     el: '#cgz6',
     data: {
-        curveWidth:"",
-        curveHeight:"",
-        parameters:cgz6Data.result.parameters,
+        D:0,//主蒸汽流量
+        Pz:0.1,//主蒸汽压力
+        T:100,//主蒸汽温度
+        P:-5,//炉膛负压
+        Tpy:85,//排烟温度
+        O2:0,//过剩氧量
+        G:0,//给水流量
+        H:0,//汽包水位
+        QT:0,//上下壁温差
+        Tu:0,//炉膛出口烟温
+        Tgb:0,//过热器壁温
+        Tgs:0,
+        d:1017.5,
+        a:2.5,
+        b:10,
+        gum:44,
+        Ht:0,//焓值
+        g:0,//排粉机总转速
+        B:0,
+        B1:0,
+        B2:0,
+        Q:0,
+        Qd:4000,//燃料低位发热量
+        D:0,//锅炉蒸发量
+        v:0.1,
+        n:63,
+        Af1n:0,//送风机阀门开度
+        Af2n:0,//引风机阀门开度
+        h:100,
+        option:cgz6Data.result.option,
         gasWaterComboImg:cgz6Data.result.gasWater,
         combustionRegulationComboImg:cgz6Data.result.combustionRegulationComboImg,
         blueBtns:cgz6Data.result.blueBtns,
@@ -254,26 +226,44 @@ new Vue({
         doubleNums:cgz6Data.result.doubleNums,
         hotpartImgs: cgz6Data.result.hotpartImgs,
         Combustionregulationsystem:cgz6Data.result.Combustionregulationsystem,
-        inletValveBaffle:cgz6Data.result.inletValveBaffle,//入口挡板
+        hotpic:cgz6Data.result.hotpic,
         inputTextarea:cgz6Data.result.inputTextarea,
         btnCheckboxs:cgz6Data.result.btnCheckboxs,
         FuelAerobics:cgz6Data.result.FuelAerobics,
         feedwater:cgz6Data.result.feedwater,
-        FeedwaterOption:cgz6Data.result.FeedwaterOption,
-        optionsValue:0.6,
-        optionsExport:0.6,
-        displayExport:false,
+        /*
+        燃油器
+         */
+        ky:0,
+        kt:0,
+        youkai:false,
+        openColor:false,
+        closeColor:true,
+        /*
+        燃烧调节系统
+         */
+        kb:0,
         dialogmillFan1:false,//排粉机模态框
         dialogmillFan2:false,
-        displaySelect:false,
-        dialogcontent:"",
+        g1:0.8,//排粉机阀门开度
+        paifens1:"64px",
+        paifens2:"64px",
+        Sonfens:"0px",
+        Yinfens:"0px",
+        g2:0.8,
+        Paifen1:false,
+        Paifen2:false,//排粉机模态内容显隐
+        Af1:0,
+        Songfen:false,
         systemTitle:"",
+        Yinfen:false,
+        Af2:0,
+        /*
+        锅炉汽水
+         */
+
         AssemblyTitle:"",
         evenyoneTitle:"",
-        optionsMillFan1:0.1,
-        radioMillFan2:false,
-        displayMillFan1:true,//单选框1
-        displayRadio2:false,
         dialogAssembly:false,//部件
         checkboxSelct:[],
         checkDisplay:false,
@@ -288,87 +278,201 @@ new Vue({
         picDiv:false,
         airCondition:"",
         waterCondition:"",
+        /*
+        壁温/给水调节
+         */
+        Feedwaters:"64px",
+        f:0.8,
+        waterStop:0,
+        displaytiaojie:false,
+        /*
+        点火枪
+         */
+        hotblack:true,
+        hotred:false,
         dialogHotpart:false,//点火枪
         radioHotpart:false,
         inputtext:false,
         radioHotpartNum:0,
         echardouble:0,
         changeTime:false,
-        optionsFeedwater:0.6,//给水
         displayFeedwater:false,
         Feedwatertitle:"",
         counts:0,//累计分数
         score:"",//扣分
         countsfun:"",
-        countsFFnum:0,
-        WallTemperaturetitle:"",
         displayWallTemperature:false,
-        WallTemperatureNum:0.1,
         radioHotpartshow:false,//点火枪显示/隐藏
         Hotparttitle:"",//点火枪标题
-        radioOilgun:true,//油枪
-        Oilgunshow:false,
         hotsRadiotitle:"",
+        gasWaterShow:false,
+        hotComboShow:false,
+        combusShow:true,
+        burngreens:true,
+        watergreens:false,
+        hotgreens:false,
+        toufen:false,
+        doublestop:0,
+        /*
+        汽包壁温调节
+         */
+        QAf:15,
+        wallWidth:"40px",
+        times:"",
+        tiaojieTitle:"",
+        displaywell:false,
+        bbb:0,
     },
     mounted:function(){
         const that = this;
         this.$nextTick(function () {
             this.curveShow();
+
         });
         //监控屏幕的变化和div的宽度变化
-        /*window.onresize = function temp() {
-            let chartBox = document.getElementsByClassName('charts')[0];
-            that.curveWidth=chartBox.offsetWidth/10+"rem";
-            that.curveHeight=((chartBox.offsetWidth*189)/385)/10+"rem";
 
-            let myChart1= document.getElementById('curve');
-            myChart1.style.width = that.curveWidth;
-            myChart1.style.height =that.curveHeight;
-
-            //折图的数据加载
-            let myChart = echarts.init(myChart1);
-            myChart.setOption(cgz6Data.result.option);
-        };*/
     },
     methods: {
+        scorefun:function () {
+            var scoreset=setInterval(()=>{
+                var scoreJs=this.score.split(",");
+                var tongji;
+                var counts=0;
+                tongji=scoreJs.map(function(data){
+                    return +data;
+                });
+                for(var i=0;i<tongji.length;i++){
+                    counts=counts+tongji[i];
+                }
+                if(counts<=-100){
+                    clearInterval(guminterval);
+                    clearInterval(ZhengFa);
+                    clearInterval(ktChange);
+                    clearInterval(waters);
+                    clearInterval(H20);
+                    clearInterval(PaiYan);
+                    clearInterval(lutangPz);
+                    clearInterval(QiBao);
+                    clearInterval(GuoRe);
+                    clearInterval(sendBtnTimer);
+                    this.$message({
+                        message:'扣分已达100，请提交！',
+                        type:'error',
+                        duration:5000,
+                        showClose:true,
+                    });
+                    clearInterval(scoreset);
+                }
+                console.log(counts);
+            },1000);
+
+
+        },
+        /*
+        燃油器
+         */
+        horOpenorClose:function (kai) {
+            if(kai=='open'){
+                this.openColor=true;
+                this.closeColor=false;
+                this.ky=1;
+                this.youkai=true;
+            }
+            if(kai=='close'){
+                this.openColor=false;
+                this.closeColor=true;
+                this.youkai=false;
+                this.ky=0;
+                clearInterval(ktChange);
+            }
+        },
+        /*
+        切换系统
+         */
+        changeSys:function(sysName){
+                if(sysName == 'water'){
+                    this.gasWaterShow=true;
+                    this.hotComboShow=false;
+                    this.combusShow=false;
+                    //按纽
+                    this.burngreens=false;
+                    this.watergreens=true;
+                    this.hotgreens=false;
+                }else if(sysName == 'burn'){
+                    this.gasWaterShow=false;
+                    this.hotComboShow=false;
+                    this.combusShow=true;
+                    //按纽
+                    this.burngreens=true;
+                    this.watergreens=false;
+                    this.hotgreens=false;
+                }else{
+                    this.gasWaterShow=false;
+                    this.hotComboShow=true;
+                    this.combusShow=false;
+                    //按纽
+                    this.burngreens=false;
+                    this.watergreens=false;
+                    this.hotgreens=true;
+                }
+        },
         /**
          * 速度的方法
          */
         doubleIndex:function(doubleImg){
             this.doubleNumID=doubleImg.doubleNumID;
-            if(this.doubleNumID=="double1"){
+            this.doublestop+=1;
+            if(this.doubleNumID=="double1"&&this.doublestop==1){
                 cgz6Data.result.option.xAxis[0].max=40;
                 cgz6Data.result.option.xAxis[0].splitNumber=5;
+                for(var i=0;i<this.option.series[2].data.length;i++){
+                    this.option.series[2].data[i][0]=this.option.series[2].data[i][0]/6;
+                    this.option.series[3].data[i][0]=this.option.series[3].data[i][0]/6;
+                }
                 this.echardouble=1;
                 this.doubleNums[1].display=false;
                 this.doubleNums[2].display=false;
                 this.$message({
                     message:"启动6倍速度",
-                    type:"warning"
+                    type:"warning",
+                    duration:5000,
+                    showClose:true,
                 })
             }
-            if(this.doubleNumID=="double2"){
+            if(this.doubleNumID=="double2"&&this.doublestop==1){
                 cgz6Data.result.option.xAxis[0].max=30;
                 cgz6Data.result.option.xAxis[0].splitNumber=6;
+                for(var i=0;i<this.option.series[2].data.length;i++){
+                    this.option.series[2].data[i][0]=this.option.series[2].data[i][0]/8;
+                    this.option.series[3].data[i][0]=this.option.series[3].data[i][0]/8;
+                }
                 this.echardouble=2;
                 this.doubleNums[0].display=false;
                 this.doubleNums[2].display=false;
                 this.$message({
                     message:"启动8倍速度",
-                    type:"warning"
+                    type:"warning",
+                    duration:5000,
+                    showClose:true,
                 })
 
 
             }
-            if(this.doubleNumID=="double3"){
+            if(this.doubleNumID=="double3"&&this.doublestop==1){
                 cgz6Data.result.option.xAxis[0].max=24;
                 cgz6Data.result.option.xAxis[0].splitNumber=6;
+                for(var i=0;i<this.option.series[2].data.length;i++){
+                    this.option.series[2].data[i][0]=this.option.series[2].data[i][0]/10;
+                    this.option.series[3].data[i][0]=this.option.series[3].data[i][0]/10;
+                }
                 this.echardouble=3;
                 this.doubleNums[1].display=false;
                 this.doubleNums[0].display=false;
                 this.$message({
                     message:"启动10倍速度",
-                    type:"warning"
+                    type:"warning",
+                    duration:5000,
+                    showClose:true,
                 })
             }
             this.curveShow();
@@ -378,8 +482,8 @@ new Vue({
          */
         curveShow: function () {
             let myChart1= document.getElementById('curve');
-            this.curveWidth=800+"px";
-            this.curveHeight=400+"px";
+            this.curveWidth=600+"px";
+            this.curveHeight=300+"px";
             myChart1.style.width = this.curveWidth;
             myChart1.style.height =this.curveHeight;
 
@@ -434,12 +538,15 @@ new Vue({
         FuelAerobicfun:function (Fuel) {
             this.FuelAerobicID=Fuel.FuelAerobicID;
             if(this.FuelAerobicID=="part18"){
-                this.parameters.gum=Math.floor((this.parameters.gum+4.4)*10)/10;
+                this.gum=Math.floor((this.gum+4.4)*10)/10;
+                if(this.Tu>=350){
+                    this.toufen=true;
+                }
             }
             if(this.FuelAerobicID=="part19"){
-                this.parameters.gum=Math.floor((this.parameters.gum-4.4)*10)/10;
-                if(this.parameters.gum<0)
-                    this.parameters.gum=0;
+                this.gum=Math.floor((this.gum-4.4)*10)/10;
+                if(this.gum<0)
+                    this.gum=0;
             }
         },
         /**
@@ -450,144 +557,225 @@ new Vue({
           this.systemID=item.systemID;
           switch(this.systemID){
               case "part0":
-                  this.systemTitle="排粉机";
-                  this.dialogcontent="排粉机阀门开度:";
-                  this.displaySelect=false;
-                  this.displayMillFan1=true;
-                  this.displayRadio2=false;
-                  this.displayExport=false;
+                  this.systemTitle="#1排粉机";
+                  this.Paifen1=true;
+                  this.Paifen2=false;
+                  this.Yinfen=false;
+                  this.Songfen=false;
                   break;
               case "part1":
-                  this.systemTitle="排粉机";
-                  this.dialogcontent="排粉机阀门开度:";
-                  this.displaySelect=false;
-                  this.displayMillFan1=true;
-                  this.displayRadio2=false;
-                  this.displayExport=false;
+                  this.systemTitle="#2排粉机";
+                  this.Paifen2=true;
+                  this.Paifen1=false;
+                  this.Yinfen=false;
+                  this.Songfen=false;
                   break;
               case "part15":
-                  this.systemTitle="送风挡板";
-                  this.dialogcontent="送风挡板开度：";
-                  this.displaySelect=true;
-                  this.displayExport=false;
-                  this.displayRadio2=false;
-                  this.displayMillFan1=false;
+                  this.systemTitle="送风阀门";
+                  this.Paifen1=false;
+                  this.Paifen2=false;
+                  this.Songfen=true;
+                  this.Yinfen=false;
                   break;
               case "part16":
-                  this.systemTitle="引风挡板";
-                  this.dialogcontent="引风挡板开度：";
-                  this.displayRadio2=false;
-                  this.displayExport=true;
-                  this.displaySelect=false;
-                  this.displayMillFan1=false;
+                  this.systemTitle="引风阀门";
+                  this.Paifen1=false;
+                  this.Paifen2=false;
+                  this.Songfen=false;
+                  this.Yinfen=true;
                   break;
 
           }
         },
         /*
-        燃烧调节系统确定方法
-         */
-        millImgconfirms:function(){
-            this.dialogmillFan1=false;
-            this.deleteDetermine();
-            this.Numcount();
-            /*
-            主蒸汽温度变化
-             */
-                this. parameters.gasTemperature =gaswendu+Math.floor(((this.parameters.v * this.optionsMillFan1*this.parameters.Qd*44) / this.parameters.Ht)*100)/100;
-            /*
-            主蒸汽压力
-            */
-                this.parameters.pressure =Math.floor((gasqiya+(this.parameters.Q / this.parameters.Ht) / 1500 )* 1000)/ 1000;
-
-
-        },
-        /*
         数据计算
          */
         Numcount:function () {
-            var guncount=0;
-            this.parameters.Q = this.optionsMillFan1 * this.parameters.Qd * 44;
-            this.parameters.waterQuantity = 410 * this.optionsFeedwater;
-            //燃料同操器煤粉变化
-            var gums=this.optionsMillFan1 * 4.4;
-            var guminterval=setInterval(gumfun,10000);
-            function gumfun() {
-                if(cgz6Data.result.parameters.gum<0){
-                    cgz6Data.result.parameters.gum=0;
-                    clearInterval(guminterval);
-                    return false;
-                }
-                if(dttrue>11){
-                    clearInterval(guminterval);
-                    return false;
-                }
-                cgz6Data.result.parameters.gum-=gums;
-                var ran = Math.floor((Math.random() * 10 + 1) / 10 * 10) / 10;
-            }
-            /*
-            主蒸汽流量
-             */
-            this.parameters.gasQuantity = Math.floor(this.parameters.Q / this.parameters.Ht * 100) / 100;
-            if (this.optionsValue != "") {
-                this.parameters.Af1n = this.optionsValue;
-            } else this.parameters.Af1n = 0;
-            /*
-            过剩氧量输出
-             */
-            if (this.optionsMillFan1 == 0)
-                this.parameters.gas = 0;
-            else this.parameters.gas = Math.floor(20 * (this.parameters.Af1n * 48 / 48) * (44 / 44 * this.optionsMillFan1) * 100) / 100;
-            /*
-           出口烟温
-            */
-            if(this.parameters.gas>5){
-                this.parameters.exportTemperature=350+10* randoms;
+            if(this.T<=30)
+                this.Ht=5000;
+            if(this.T<=60&&this.T>30)
+                this.Ht=4500;
+            if(this.T<=120&&this.T>60)
+                this.Ht=3500;
+            if(this.T>120)
+                this.Ht=2000;
+            if(this.ky==1){
+                this.B2=this.ky*10;
             }else{
-                this.parameters.exportTemperature=1110-this.parameters.gas*25;
+                this.B2=0;
             }
-
+            this.B1=this.g1*44+this.g2*44;
+            this.B=this.B1+this.B2;
+            this.Q=this.B*this.Qd;
+            randomcout(1,1);
             /*
-            过热器壁温
+            锅炉蒸发量
              */
-            this.parameters.Superheater=Math.floor(((this.parameters.v * this.parameters.Q) / this.parameters.Ht)*100)/100+15*randoms;
+            var D=Math.floor((this.Q/this.Ht)*100)/100;
+            ZhengFa=setInterval(()=>{
+                if(this.D<=D){
+                    this.D=Math.floor((this.D+randoms)*100)/100;
+                }else{
+                    this.D=D*randomcount;
+                }
+            },1000);
             /*
-            排烟温度
+            炉膛出口烟温
              */
-            this.parameters.D = this.parameters.Q / this.parameters.Ht;
-            this.parameters.Pz = this.parameters.D /1500;
-            if (this.optionsMillFan1 == 0 && this.optionsFeedwater == 0) {
-                this.parameters.smokeTemperature = 35;
-
-            }
-            if (this.optionsMillFan1 > 0) {
-                this.parameters.smokeTemperature = Math.floor((135 + 10 * randoms)*100)/100 ;
-            }
-            if (this.optionsMillFan1 > 0 && this.optionsFeedwater > 0) {
-                this.parameters.smokeTemperature = Math.floor((80 + 0.329 * this.optionsMillFan1 + 20 * randoms)*100)/100 ;
-
-            }
+                ktChange=setInterval(()=>{
+                    this.kt=Math.floor((this.kt+0.1)*100)/100;
+                    this.kb=Math.floor((this.kb+0.1)*100)/100;
+                    var Tus=Math.floor((this.ky*10*this.kt+this.kb*this.B1*5+10)*100)/100;
+                    var chao=0;
+                    if(Tus>=this.B*20){
+                        Tus=this.B*20;
+                        if(this.Tu<=Tus){
+                            this.Tu=Math.floor((this.Tu+10*randoms)*100)/100;
+                        }else {
+                            this.Tu=Math.floor((Tus*randomcount)*100)/100;
+                        }
+                    }else if(Tus<this.B*20){
+                        if(this.Tu<=Tus){
+                            this.Tu=Math.floor((this.Tu+10*randoms)*100)/100;
+                        }else {
+                            this.Tu=Math.floor((Tus*randomcount)*100)/100;
+                        }
+                    }
+                },6000);
+                if(this.Tu>=350&&this.toufen==false){
+                    this.score+="-5,";
+                }
+            /*
+            给水流量
+             */
+            G=210*this.f;
+            waters=setInterval(()=>{
+                if(this.G<=G){
+                    this.G=Math.floor((this.G+randoms)*100)/100;
+                }else{
+                    this.G=Math.floor(G*randomcount*100)/100;
+                }
+            },700);
             /*
             水位
              */
-            this.parameters.drawdown = Math.floor(( (this.parameters.waterQuantity - this.parameters.D) - this.parameters.b * this.parameters.Pz / 9.8) * 100) / 100 ;
-
+            H=this.a*(G-D)- this.b*this.Pz/9.8;
+            H20=setInterval(()=>{
+                if(this.H<=H){
+                    this.H=Math.floor((this.H+randoms)*100)/100;
+                }else{
+                    this.H=Math.floor(H*randomcount*100)/100;
+                }
+                if(this.H>50||this.H<-50){
+                    this.waterStop+=1;
+                }
+                if(this.waterStop==1){
+                    this.score+="-5,";
+                    this.$message({
+                        message:'操作错误！请控制水位在-50mm-50mm',
+                        type:'error',
+                        duration:5000,
+                        showClose:true,
+                    })
+                }
+            },1000);
             /*
-            炉膛负压
+            排烟温度
              */
-            this.parameters.Af2n = this.optionsExport;
-            this.parameters.negativePressure = Math.floor(this.parameters.h * (this.parameters.Af1n * 48 / 48 - this.parameters.n * this.parameters.Af2n / 63 + this.optionsMillFan1 * 44 / 44) * 100) / 100 ;
+            PaiYan=setInterval(()=>{
+                if(this.B==0&&G==0){
+                    if(this.Tpy>=35){
+                        this.Tpy=Math.floor((this.Tpy-randoms)*100)/100;
+                    }else if(this.Tpy<=35){
+                        this.Tpy=Math.floor((this.Tpy+randoms)*100)/100;
+                    }else {
+                        this.Tpy=Math.floor(this.Tpy*randomcount*100)/100
+                    }
+                }
+                if(this.B>0&&G==0){
+                    if(this.Tpy>=135){
+                        this.Tpy=Math.floor((this.Tpy-randoms)*100)/100;
+                    }else if(this.Tpy<=135){
+                        this.Tpy=Math.floor((this.Tpy+randoms)*100)/100;
+                    }else {
+                        this.Tpy=Math.floor((this.Tpy+10*randomcount)*100)/100;
+                    }
+                }
+                if(this.B>0&&G>0){
+                    this.Tgs=80+0.329*G;
+                    if(this.Tpy<=this.Tgs){
+                        this.Tpy=Math.floor((this.Tpy+randoms)*100)/100;
+                    }else if(this.Tpy>=this.Tgs){
+                        this.Tpy=Math.floor((this.Tpy-randoms)*100)/100;
+                    }else {
+                        this.Tpy=Math.floor((this.Tpy+20*randomcount)*100)/100
+                    }
+                }
+            },1000);
+            /*
+            炉膛压力
+             */
+            P=this.h*(this.Af1/48-this.Af2/63+this.B/44);
+            lutangPz=setInterval(()=>{
+                if(this.P<=P){
+                    this.P=Math.floor((this.P+randoms)*100)/100;
+                }else if(this.P>P){
+                    this.P=Math.floor((this.P-randoms)*100)/100;
+                }else {
+                    this.P=Math.floor(this.P*randomcount*100)/100;
+                }
+            },1000);
             /*
             汽包上下壁温
              */
-            this.parameters.WallTemperature=44*this.parameters.Qd*this.WallTemperatureNum/5000*10;
-        },
-        /*
-        燃烧调节系统取消方法
-         */
-        millImgdisconfirms:function () {
-            this.dialogmillFan1=false;
-
+            QiBao=setInterval(()=>{
+                    var QT=10*D/this.QAf;
+                    if(this.QT<=QT){
+                        this.QT=Math.floor((this.QT+5*randoms)*100)/100;
+                    }else {
+                        this.QT = Math.floor(QT * randomcount * 100) / 100;
+                    }
+            },1000);
+            /*
+            过热器壁温
+             */
+            GuoRe=setInterval(()=>{
+                var Tgb=25+800*this.Q/(D*this.Ht)+2*this.Af1;
+                if(this.Tgb<=Tgb){
+                    this.Tgb=Math.floor((this.Tgb+20*randoms)*100)/100;
+                }else{
+                    this.Tgb=Math.floor((Tgb*randomcount)*100)/100;
+                }
+            },4000);
+            //燃料同操器煤粉变化
+            this.g=this.g1+this.g2;
+            guminterval=setInterval(()=>{
+                if(this.gum<=0){
+                    this.score="-100,";
+                    this.$message({
+                       message:'燃料不足，引起MFT动作，本题不得分，请提交！',
+                        type:'error',
+                        duration:5000,
+                        showClose:true,
+                    });
+                    this.gum=0;
+                    clearInterval(guminterval);
+                    clearInterval(ZhengFa);
+                    clearInterval(ktChange);
+                    clearInterval(waters);
+                    clearInterval(H20);
+                    clearInterval(PaiYan);
+                    clearInterval(lutangPz);
+                    clearInterval(QiBao);
+                    clearInterval(GuoRe);
+                    return false;
+                }
+                if(dttrue>12){
+                    clearInterval(guminterval);
+                    return false;
+                }
+                this.gum=Math.floor((this.gum-this.g * 0.44)*100)/100;
+            },10000);
         },
         /*
         锅炉汽水系统部件事件(
@@ -668,7 +856,7 @@ new Vue({
                             this.btnCheckboxs[i].display=false;
                         break;
                     case "btn6":
-                        this.AssemblyTitle="暖管操作";
+                        this.AssemblyTitle="过热器出囗联箱空气阀";
                         if(i==13)
                             this.btnCheckboxs[i].display=true;
                         else
@@ -686,13 +874,22 @@ new Vue({
                             this.btnCheckboxs[i].display=false;
                         break;
                     case "btn7":
-                        this.btnCheckboxs[i].display=false;
-                        this.AssemblyTitle="壁温操作";
-                        this.WallTemperaturetitle="汽包上下壁温:";
-                        this.displayWallTemperature=true;
+                        this.tiaojieTitle="汽包壁温";
+                        this.displaytiaojie=true;
+                        this.dialogAssembly=false;
+                        this.displaywell=true;
+                        this.displayFeedwater=false;
                         break;
                 }
             }
+            //给水操作
+            if(this.feedwaterID=="part17"){
+                this.tiaojieTitle="给水阀";
+                this.displayFeedwater=true;
+                this.displaytiaojie=true;
+                this.dialogAssembly=false;
+                this.displaywell=false;
+            };
             //图片（汽包除外）
             if(this.assemblyID)
             for(var j=0;j<this.assemblys.length;j++){
@@ -753,15 +950,7 @@ new Vue({
                         break;
                 }
             };
-            //给水操作
-            if(this.feedwaterID=="part17"){
-                this.AssemblyTitle="给水操作";
-                this.Feedwatertitle="给水阀门开度：";
-                this.displayFeedwater=true;
-                this.btnDiv=false;
-                this.picDiv=false;
-                this.displayWallTemperature=false;
-            };
+
 
         },
         /*
@@ -769,47 +958,6 @@ new Vue({
          */
         assemblyConfirms:function () {
             this.dialogAssembly=false;
-            this.deleteDetermine();
-            this.Numcount();
-            /*
-            完成步骤曲线出现判定*/
-            var a=0;
-            var b=0;
-            var confir=0;
-            //累计空气阀关闭数量（第一步骤）
-            for(var i=0;i<this.assemblys.length;i++){
-                if(this.assemblys[i].airValve==false){
-                    a++;
-                }
-                if(a==7){
-                    airvaluenum=1;
-                };
-            }
-            console.log(b)
-            //第二步骤
-            if(confir==0)
-            if(this.checkboxSelct[1]==["第一次排污"]&&this.checkboxSelct[0]==["暖管工作"]||
-                this.checkboxSelct[1]==["暖管工作"]&&this.checkboxSelct[0]==["第一次排污"]){
-                airvaluenum=2;
-                confir+=1;
-            }
-            //第三步骤
-            if(confir==1)
-            if(this.checkboxSelct[2]==["检修"]&&this.checkboxSelct[3]==["冲洗压力表管"]||
-                this.checkboxSelct[3]==["冲洗压力表管"]&&this.checkboxSelct[2]==["检修"]){
-                airvaluenum=3;
-                confir+=1;
-
-            }
-            //第四步骤
-            for(var j=0;j<this.assemblys.length;j++)
-            if(this.assemblys[j].trap==false){
-                b++;
-            }
-            if(b==7){
-                airvaluenum=4;
-            };
-
         },
         /*
         点火枪模态框
@@ -823,43 +971,18 @@ new Vue({
                 this.Hotparttitle="点火枪操作";
                 this.hotsRadiotitle="点火枪状态："
             }
-            if(this.hotID=="Oilgun"){
-                this.Oilgunshow=true;
-                this.radioHotpartshow=false;
-                this.Hotparttitle="停油枪操作";
-                this.hotsRadiotitle="停油枪阀门状态：";
-            }
-        },
-        /*
-        点火枪取消按钮
-         */
-        dishotpartfun:function () {
-            this.deleteContent();
-
         },
         /*
         点火枪确定按钮
          */
         hotpartfun:function () {
+            this.scorefun();
             this.dialogHotpart=false;
-            this.Numcount();
             var randomNum;
             var echarXais=1;
-            //更新图标数据函数
-            function daoshus() {
-                let myChart1= document.getElementById('curve');
-                this.curveWidth=800+"px";
-                this.curveHeight=400+"px";
-                myChart1.style.width = this.curveWidth;
-                myChart1.style.height =this.curveHeight;
-
-                //折图的数据加载
-                let myChart = echarts.init(myChart1);
-                myChart.setOption(cgz6Data.result.option);
-            }
             //随机数公共函数
             function randomfun(min,max) {
-                randomNum=parseInt(Math.random()*(max-min+1)+min);
+                randomNum=Math.floor((Math.random()*(max-min+1)+min)*100)/100;
             }
             if(this.echardouble==1)
                 echarXais=6;
@@ -867,340 +990,616 @@ new Vue({
                 echarXais=8;
             if(this.echardouble==3)
                 echarXais=10;
+            //点火前检查
+                if(this.radioHotpart==true&&this.youkai==true){
+                    if(this.btnCheckboxs[5].checked==false){
+                        this.score+="-5,";
+                    }else {
+                        this.score+="0,";
+                    }
+                    if(this.btnCheckboxs[9].checked==false){
+                        this.score+="-5,";
+                    }else {
+                        this.score+="0,";
+                    }
+                    if(this.inputTextarea[0].inputText==""||this.inputTextarea[3].inputText==""){
+                        this.score+="-5,";
+                    }else{
+                        this.score+="0,";
+                    }
+                    if(this.inputTextarea[0].inputText==""||this.inputTextarea[3].inputText==""
+                    ||this.btnCheckboxs[5].checked==false||this.btnCheckboxs[9].checked==false){
+                        this.$message({
+                            message:'操作错误，点火前请先进行相关检查和记录！',
+                            type:'error',
+                            duration:5000,
+                            showClose:true,
+                        })
+                    }
+                }
             //点火
-            if(this.radioHotpart==true&&this.radioHotpartNum==0){
+            if(this.youkai==false&&this.radioHotpart==true){
+                this.score+="-5,";
+                this.$message({
+                    message:'操作错误，请开启燃油器！',
+                    type:'error',
+                    duration:5000,
+                    showClose:true,
+                })
+            }else{
+                this.score+="0,";
+            }
+            if(this.radioHotpart==true&&this.radioHotpartNum==0
+                &&this.youkai==true){
+                if(this.gum<=0) {
+                    this.score="-100,";
+                    this.$message({
+                        message: '燃料不足，引起MFT动作，本题不得分，请提交！',
+                        type: 'error',
+                        duration:5000,
+                        showClose:true,
+                    });
+                }
+                for(var i=0;i<this.hotpic.length;i++){
+                    this.hotpic[i].display=true;
+                }
+                this.hotblack=false;
+                this.hotred=true;
+                this.Numcount();
                 this.radioHotpartNum=1;
                 dttrue=0;
-                if(this.echardouble==0){
-                    this.doubleNums[0].display=false;
-                    this.doubleNums[1].display=false;
-                    this.doubleNums[2].display=false;
-                    this.$message({
-                        message:"启动1倍速度",
-                        type:"warning"
-                    })
-                }
                 this.changeTime=true;
                 if(dttrue==0){
-                    randomfun(100,120)
+                    randomfun(100,120);
                     cgz6Data.result.option.series[0].data.push([parseInt(13/echarXais),randomNum]);
                     cgz6Data.result.option.series[1].data.push({value:[parseInt(13/echarXais),0.2],symbolSize: 6});
-                    cgz6Data.result.parameters.gasTemperature=randomNum;
-                    gaswendu=randomNum;
-                    gasqiya=0.2;
-                    cgz6Data.result.parameters.pressure=0.2;
+                    QuXian=setInterval(()=>{
+                        if(this.T<randomNum){
+                            this.T=Math.floor((this.T+randoms)*100)/100;
+                        }else{
+                            this.T=Math.floor((randomNum*randomcount)*100)/100;
+                        }
+                    },1000);
+                    this.Pz=0.2;
                     dttrue=1;
                 }
                 this.curveShow();
-                daoshus();
-                var sendBtnTimer = setInterval(changeSendBtn,1000);
-                function changeSendBtn() {
+                sendBtnTimer = setInterval(()=>{
                     dt--;
-                    if(dttrue>11||cgz6Data.result.parameters.gum==0){
-                        hh=1;
+                    if(dttrue>12||this.gum==0){
+                        //正常和升压检查
+                        for(var i=0;i<this.btnCheckboxs.length;i++){
+                            if(i==6||i==10){
+                                if(this.btnCheckboxs[i].checked!=true){
+                                    this.score+="-5,";
+                                    break;
+                                }else {
+                                    this.score+="0,";
+                                }
+                            }
+                            if(i==7||i==11){
+                                if(this.btnCheckboxs[i].checked!=true){
+                                    this.score+="-5,";
+                                    break;
+                                }else {
+                                    this.score+="0,";
+                                }
+                            }
+                            if(i==8||i==12){
+                                if(this.btnCheckboxs[i].checked!=true){
+                                    this.score+="-5,";
+                                    break;
+                                }else {
+                                    this.score+="0,";
+                                }
+                            }
+                        }
+                        //升压记录
+                        if(this.inputTextarea[1].inputText!=""&&this.inputTextarea[4].inputText!=""){
+                            this.score+="0,";
+                        }else{
+                            this.score+="-5,";
+                        }
+                        if(this.inputTextarea[2].inputText!=""&&this.inputTextarea[5].inputText!=""){
+                            this.score+="0,";
+                        }else{
+                            this.score+="-5,";
+                        }
+                        //控制炉膛出口烟温和过热器壁温
+                        if(this.g1==0.8&&this.g2==0.8){
+                            this.score+="-5,";
+                            this.score+="-5,";
+                        }
                         clearInterval(sendBtnTimer);
                         this.changeTime=false;
                         return false;
                     }
-                    document.getElementById('times').innerHTML=dt+'秒';
+                    this.times=dt+'秒';
                     if(dttrue==1&&dt==0){
-                        this.countsfun=1;//计算前一步
+                        for(var i=0;i<this.assemblys.length;i++) {
+                            if (this.assemblys[i].airValve != false) {
+                                this.score+="-5,";
+                                break;
+                            }else{
+                                this.score+="0,";
+                            }
+                            if (this.assemblys[i].trap != true) {
+                                this.score+="-5,";
+                                break;
+                            }
+                        }
+                        for(var i=0;i<this.btnCheckboxs.length;i++){
+                            if(i!=5&&i!=9){
+                                if(this.btnCheckboxs[i].checked==true){
+                                    this.score+="-5,";
+                                    break;
+                                }
+                            }
+                        }
                         randomfun(120,125);
                         cgz6Data.result.option.series[0].data.push([parseInt(30/echarXais),randomNum]);
                         cgz6Data.result.option.series[1].data.push({value:[parseInt(30/echarXais),0.26],symbolSize: 6});
-                        daoshus();
                         dttrue=2;
-                        dt=60;
-                        gaswendu=randomNum;
-                        gasqiya=0.26;
-                        cgz6Data.result.parameters.gasTemperature=randomNum;
-                        cgz6Data.result.parameters.pressure=0.26;
+                        dt=120;
+                        this.curveShow();
+                        setInterval(QuXian);
+                        this.Pz=0.26;
 
                     }
-                        if(dttrue==2&&dt==0){
-                            this.countsfun=2;//计算前一步
-                            randomfun(125,133);
-                            gaswendu=randomNum;
-                            cgz6Data.result.option.series[0].data.push([parseInt(40/echarXais),randomNum]);
-                            cgz6Data.result.option.series[1].data.push([parseInt(40/echarXais),0.3]);
-                            daoshus();
-                            dttrue=3;
-                            dt=4;
-                            gaswendu=randomNum;
-                            gasqiya=0.3;
-                            cgz6Data.result.parameters.gasTemperature=randomNum;
-                            cgz6Data.result.parameters.pressure=0.3;
+                    if(dttrue==2&&dt==0){
+                        for(var i=0;i<this.btnCheckboxs.length;i++){
+                            if(i==0||i==13){
+                                if(this.btnCheckboxs[i].checked==false){
+                                    this.score+="-5,";
+                                }else{
+                                    this.score+="0,";
+                                }
+                            }
+                            if(i>1&&i<5){
+                                if(this.btnCheckboxs[i].checked==true){
+                                    this.score+="-5,";
+                                    break;
+                                }
+                            }
                         }
-                        if(dttrue==3&&dt==0){
-                            randomfun(133,150);
-                            gaswendu=randomNum;
-                            cgz6Data.result.option.series[0].data.push([parseInt(47/echarXais),randomNum]);
-                            cgz6Data.result.option.series[1].data.push({value:[parseInt(47/echarXais),0.35],symbolSize: 6});
-                            daoshus();
-                            dt=60;
-                            dttrue=4;
-                            gasqiya=0.35;
-                            cgz6Data.result.parameters.gasTemperature=randomNum;
-                            cgz6Data.result.parameters.pressure=0.35;
+                        for(var i=0;i<this.assemblys.length;i++) {
+                            if (this.assemblys[i].trap != true) {
+                                this.score+="-5,";
+                                break;
+                            }
                         }
-                        if(dttrue==4&&dt==0){
-                            this.countsfun=3;//计算前一步
-                            randomfun(150,168);
-                            gaswendu=randomNum;
-                            cgz6Data.result.option.series[0].data.push([parseInt(55/echarXais),randomNum]);
-                            cgz6Data.result.option.series[1].data.push({value:[parseInt(55/echarXais),0.5],symbolSize: 6});
-                            daoshus();
-                            dt=120;
-                            dttrue=5;
-                            gasqiya=0.5;
-                            cgz6Data.result.parameters.gasTemperature=randomNum;
-                            cgz6Data.result.parameters.pressure=0.5;
+                        randomfun(125,133);
+                        this.curveShow();
+                        setInterval(QuXian);
+                        cgz6Data.result.option.series[0].data.push([parseInt(40/echarXais),randomNum]);
+                        cgz6Data.result.option.series[1].data.push([parseInt(40/echarXais),0.3]);
+                        dttrue=3;
+                        dt=4;
+                        this.Pz=0.3;
+                    }
+                    if(dttrue==3&&dt==0){
+                        randomfun(133,150);
+                        this.curveShow();
+                        setInterval(QuXian);
+                        cgz6Data.result.option.series[0].data.push([parseInt(47/echarXais),randomNum]);
+                        cgz6Data.result.option.series[1].data.push({value:[parseInt(47/echarXais),0.35],symbolSize: 6});
+                        dt=120;
+                        dttrue=4;
+                        gasqiya=0.35;
+                        this.Pz=0.35;
+                    }
+                    if(dttrue==4&&dt==0){
+                        for(var i=0;i<this.btnCheckboxs.length;i++){
+                            if(i>1&&i<4){
+                                if(this.btnCheckboxs[i].checked==false){
+                                    this.score+="-5,";
+                                    break;
+                                }else{
+                                    this.score+="0,";
+                                }
+                            }
                         }
-                        if(dttrue==5&&dt==0){
-                            randomfun(168,183);
-                            gaswendu=randomNum;
-                            cgz6Data.result.option.series[0].data.push([parseInt(70/echarXais),randomNum]);
-                            cgz6Data.result.option.series[1].data.push({value:[parseInt(70/echarXais),1],symbolSize: 6});
-                            daoshus();
-                            dt=30;
-                            dttrue=6;
-                            gasqiya=1;
-                            cgz6Data.result.parameters.gasTemperature=randomNum;
-                            cgz6Data.result.parameters.pressure=1;
+                        if(this.btnCheckboxs[4].checked==true){
+                            this.score+="-5,";
                         }
-                        if(dttrue==6&&dt==0){
-                            randomfun(183,235);
-                            gaswendu=randomNum;
-                            cgz6Data.result.option.series[0].data.push([parseInt(120/echarXais),randomNum]);
-                            cgz6Data.result.option.series[1].data.push([parseInt(120/echarXais),3]);
-                            daoshus();
-                            dt=4;
-                            dttrue+=1;
-                            gasqiya=3;
-                            cgz6Data.result.parameters.gasTemperature=randomNum;
-                            cgz6Data.result.parameters.pressure=3;
+                        for(var i=0;i<this.assemblys.length;i++) {
+                            if (this.assemblys[i].trap != true) {
+                                this.score+="-5,";
+                                break;
+                            }
                         }
-                        if(dttrue==7&&dt==0){
-                            randomfun(235,258);
-                            gaswendu=randomNum;
-                            cgz6Data.result.option.series[0].data.push([parseInt(195/echarXais),randomNum]);
-                            cgz6Data.result.option.series[1].data.push([parseInt(195/echarXais),4.5]);
-                            daoshus();
-                            dt=4;
-                            dttrue+=1;
-                            gasqiya=4.5;
-                            cgz6Data.result.parameters.gasTemperature=randomNum;
-                            cgz6Data.result.parameters.pressure=4.5;
+                        randomfun(150,168);
+                        this.curveShow();
+                        setInterval(QuXian);
+                        cgz6Data.result.option.series[0].data.push([parseInt(55/echarXais),randomNum]);
+                        cgz6Data.result.option.series[1].data.push({value:[parseInt(55/echarXais),0.5],symbolSize: 6});
+                        dt=120;
+                        dttrue=5;
+                        this.Pz=0.5;
+                    }
+                    if(dttrue==5&&dt==0){
+                        for(var i=0;i<this.assemblys.length;i++) {
+                            if (this.assemblys[i].trap == true||this.btnCheckboxs[4].checked!=true) {
+                                this.score+="-5,";
+                                break;
+                            }else{
+                                this.score+="0,";
+                            }
                         }
-                        if(dttrue==8&&dt==0){
-                            randomfun(258,270);
-                            gaswendu=randomNum;
-                            cgz6Data.result.option.series[0].data.push([parseInt(200/echarXais),randomNum]);
-                            cgz6Data.result.option.series[1].data.push({value:[parseInt(200/echarXais),5],symbolSize: 6});
-                            daoshus();
-                            dt=30;
-                            dttrue+=1;
-                            gasqiya=5;
-                            cgz6Data.result.parameters.gasTemperature=randomNum;
-                            cgz6Data.result.parameters.pressure=5;
+                        if(this.continuousBlowdown==true||this.btnCheckboxs[1].checked==true){
+                            this.score+="-5,";
                         }
-                        if(dttrue==9&&dt==0){
-                            randomfun(270,285);
-                            gaswendu=randomNum;
-                            cgz6Data.result.option.series[0].data.push([parseInt(215/echarXais),randomNum]);
-                            cgz6Data.result.option.series[1].data.push([parseInt(215/echarXais),7]);
-                            daoshus();
-                            dt=4;
-                            dttrue+=1;
-                            gasqiya=7;
-                            cgz6Data.result.parameters.gasTemperature=randomNum;
-                            cgz6Data.result.parameters.pressure=7;
+                        randomfun(168,183);
+                        this.curveShow();
+                        setInterval(QuXian);
+                        cgz6Data.result.option.series[0].data.push([parseInt(70/echarXais),randomNum]);
+                        cgz6Data.result.option.series[1].data.push({value:[parseInt(70/echarXais),1],symbolSize: 6});
+                        dt=4;
+                        dttrue=6;
+                        this.Pz=1;
+                    }
+                    if(dttrue==6&&dt==0){
+                        randomfun(183,235);
+                        this.curveShow();
+                        setInterval(QuXian);
+                        cgz6Data.result.option.series[0].data.push([parseInt(120/echarXais),randomNum]);
+                        cgz6Data.result.option.series[1].data.push([parseInt(120/echarXais),3]);
+                        dt=4;
+                        dttrue=7;
+                        this.Pz=3;
+                    }
+                    if(dttrue==7&&dt==0){
+                        randomfun(235,258);
+                        cgz6Data.result.option.series[0].data.push([parseInt(195/echarXais),randomNum]);
+                        cgz6Data.result.option.series[1].data.push([parseInt(195/echarXais),4.5]);
+                        dt=4;
+                        dttrue=8;
+                        this.curveShow();
+                        setInterval(QuXian);
+                        this.Pz=4.5;
+                    }
+                    if(dttrue==8&&dt==0){
+                        randomfun(258,270);
+                        
+                        cgz6Data.result.option.series[0].data.push([parseInt(200/echarXais),randomNum]);
+                        cgz6Data.result.option.series[1].data.push({value:[parseInt(200/echarXais),5],symbolSize: 6});
+                        dt=4;
+                        dttrue=9;
+                        this.curveShow();
+                        setInterval(QuXian);
+                        this.Pz=5;
+                    }
+                    if(dttrue==9&&dt==0){
+                        if(this.btnCheckboxs[1].checked!=true){
+                            this.score+="-5,";
+                        }else{
+                            this.score+="0,";
                         }
-                        if(dttrue==10&&dt==0){
-                            randomfun(285,303);
-                            gaswendu=randomNum;
-                            cgz6Data.result.option.series[0].data.push([parseInt(222/echarXais),randomNum]);
-                            cgz6Data.result.option.series[1].data.push([parseInt(222/echarXais),8.3]);
-                            daoshus();
-                            dt=4;
-                            dttrue+=1;
-                            gasqiya=8.3;
-                            cgz6Data.result.parameters.gasTemperature=randomNum;
-                            cgz6Data.result.parameters.pressure=8.3;
-                        }
-                        if(dttrue==11&&dt==0){
-                            randomfun(303,315);
-                            gaswendu=randomNum;
-                            cgz6Data.result.option.series[0].data.push([parseInt(240/echarXais),randomNum]);
-                            cgz6Data.result.option.series[1].data.push([parseInt(240/echarXais),9]);
-                            daoshus();
-                            dt=4;
-                            dttrue+=1;
-                            gasqiya=9;
-                            cgz6Data.result.parameters.gasTemperature=randomNum;
-                            cgz6Data.result.parameters.pressure=9;
-                        }
+                        randomfun(270,285);
+                        this.curveShow();
+                        setInterval(QuXian);
+                        cgz6Data.result.option.series[0].data.push([parseInt(215/echarXais),randomNum]);
+                        cgz6Data.result.option.series[1].data.push([parseInt(215/echarXais),7]);
+                        dt=4;
+                        dttrue=10;
+                        this.Pz=7;
+                    }
+                    if(dttrue==10&&dt==0){
+                        randomfun(285,303);
 
-                };
+                        cgz6Data.result.option.series[0].data.push([parseInt(222/echarXais),randomNum]);
+                        cgz6Data.result.option.series[1].data.push([parseInt(222/echarXais),8.3]);
+                        dt=4;
+                        dttrue=11;
+                        this.curveShow();
+                        setInterval(QuXian);
+                        this.Pz=8.3;
+                    }
+                    if(dttrue==11&&dt==0){
+                        randomfun(303,315);
+                        this.curveShow();
+                        setInterval(QuXian);
+                        cgz6Data.result.option.series[0].data.push([parseInt(240/echarXais),randomNum]);
+                        cgz6Data.result.option.series[1].data.push([parseInt(240/echarXais),9]);
+                        dt=4;
+                        dttrue+=1;
+                        this.Pz=9;
+                    }
+                    if(dttrue==12&&dt==0){
+                        randomfun(303,315);
+                        setInterval(QuXian);
+                        cgz6Data.result.option.series[0].data.push([parseInt(280/echarXais),randomNum]);
+                        cgz6Data.result.option.series[1].data.push([parseInt(280/echarXais),9]);
+                        dt=4;
+                        dttrue+=1;
+                        this.curveShow();
+                        this.Pz=9;
+                    }
+                },1000);
             };
-            //停油枪
-            for(var i=0;i<this.hotpartImgs.length;i++)
-                if(i>=12) {
-                    if (this.radioOilgun == false) {
-
-                        this.hotpartImgs[i].hotpartImgUrl = "images/cgz6-part21.png";
-                    }else {
-                        this.hotpartImgs[i].hotpartImgUrl = "images/cgz6-part22.png";
-                    }
-                }
 
         },
         /*
         计分
         */
         countsFF:function () {
+        var assemblytrue=false;
+        var assemblytrap=false;
+        var Checkboxtrue=false;
+        var inputtrue=false;
+        for(var i=0;i<this.assemblys.length;i++){
+            if(this.assemblys[i].airValve!=true){
+                assemblytrue=true;
+            }
+            if(this.assemblys[i].trap!=true){
+                assemblytrap=true;
+            }
+        }
+        for(var i=0;i<this.btnCheckboxs.length;i++){
+            if(this.btnCheckboxs[i].checked!=false){
+                Checkboxtrue=true;
+            }
+        }
+        for(var i=0;i<this.inputTextarea.length;i++){
+            if(this.inputTextarea[i].inputText!=""){
+                inputtrue=true;
+            }
+        }
         /*
-        点火
+        操作或交白卷
          */
-            if(this.radioHotpart==true){
-                //MFT值
-                if(this.parameters.gum<=0||this.radioOilgun==false||this.parameters.drawdown>300||this.parameters.drawdown<-300){
-                    this.counts+=0;
+        if(this.youkai!=false||this.radioHotpart!=false||this.QAf!=15
+        ||this.f!=0.8||this.Af1!=0||this.Af2!=0||assemblytrue==true
+        ||Checkboxtrue==true||inputtrue==true||assemblytrap==true){
+            if(this.youkai==false){
+                this.score+="-5,";
+            }
+            if(this.radioHotpart==false){
+                this.score+="-5,";
+            }
+            if(this.f==0.8){
+                this.score+="-5,";
+            }
+            if(this.Af1==0){
+                this.score+="-5,";
+            }
+            if(this.Af2==0){
+                this.score+="-5,";
+            }
+            if(assemblytrue==false){
+                this.score+="-5,";
+            }
+            for(var i=0;i<this.btnCheckboxs.length;i++){
+                if(this.btnCheckboxs[i].checked!=false){
+                    this.score+="-5,";
                 }
+            }
+            if(inputtrue==false){
+                this.score+="-5,";
+                this.score+="-5,";
+                this.score+="-5,";
+            }
+            if(assemblytrap==false){
+                this.score+="-5,";
+            }
+
+        }else{
+            this.score+="-100,";
+        }
+        },
+        /*
+        阀门调节
+         */
+        changNumber:function (val) {
+            /*
+            #1排粉机
+             */
+            if(val==1){
+                this.g1=Math.floor((this.g1-0.05)*100)/100;
+                this.paifens1=this.g1*80+"px";
+                if(this.g1<0){
+                    this.g1=0;
+                    this.paifens1=0+"px";
+                }
+            }
+            if(val==2){
+                this.g1=Math.floor((this.g1+0.05)*100)/100;
+                this.paifens1=this.g1*80+"px";
+                if(this.g1>1){
+                    this.g1=1;
+                    this.paifens1=80+"px";
+                }
+            }
+            if(val==1||val==2){
+                if(this.g1<=0){
+                    this.Combustionregulationsystem[0].systemUrl="images/cgz6-part-red0.png";
+                }else if(this.g1>0){
+                    this.Combustionregulationsystem[0].systemUrl="images/cgz6-part0.png";
+
+                }
+                if(this.radioHotpart==true){
+                    this.P=Math.floor(this.h*(this.Af1/48-this.Af2/63+this.B/44)*100)/100;
+                    clearInterval(ktChange);
+                    clearInterval(lutangPz);
+                    this.B1=this.g1*44+this.g2*44;
+                    this.Tu=Math.floor((this.ky*10*this.kt+this.kb*this.B1*5+10)*100)/100;
+                    this.Tgb=Math.floor((this.Tu+15)*100)/100;
+                    setInterval(()=>{
+                        this.P=this.P*randomcount;
+                        this.Tu=this.Tu*randomcount;
+                        this.Tgb=this.Tgb*randomcount;
+                    },1000);
+                }
+            }
+            /*
+            #2排粉机
+             */
+            if(val==3){
+                this.g2=Math.floor((this.g2-0.05)*100)/100;
+                this.paifens2=this.g2*80+"px";
+                if(this.g2<0){
+                    //this.temperatureReducing="images/SGR1_part-red6.png";
+                    this.g2=0;
+                    this.paifens2=0+"px";
+                }
+            }
+            if(val==4){
+                this.g2=Math.floor((this.g2+0.05)*100)/100;
+                this.paifens2=this.g2*80+"px";
+                if(this.g2>1){
+                    this.g2=1;
+                    this.paifens2=80+"px";
+                }
+            }
+            if(val==3||val==4){
+                if(this.g2<=0){
+                    this.Combustionregulationsystem[1].systemUrl="images/cgz6-part-red1.png";
+                }else if(this.g2>0){
+                    this.Combustionregulationsystem[1].systemUrl="images/cgz6-part1.png";
+
+                }
+                if(this.radioHotpart==true){
+                    clearInterval(ktChange);
+                    this.B1=this.g1*44+this.g2*44;
+                    this.Tu=Math.floor((this.ky*10*this.kt+this.kb*this.B1*5+10)*100)/100;
+                    this.P=Math.floor(this.h*(this.Af1/48-this.Af2/63+this.B/44)*100)/100;
+                }
+
+            }
+            /*
+            送风机
+             */
+            if(val==5){
+                this.Af1=Math.floor((this.Af1-0.05)*100)/100;
+                this.Sonfens=this.Af1*80+"px";
+                if(this.Af1<=0){
+                    this.Af1=0;
+                    this.Sonfens=0+"px";
+                }
+            }
+            if(val==6){
+                this.Af1=Math.floor((this.Af1+0.05)*100)/100;
+                this.Sonfens=this.Af1*80+"px";
+                if(this.Af1>=1){
+                    this.Af1=1;
+                    this.Sonfens=80+"px";
+                }
+            }
+            if(val==5||val==6){
                 /*
-                不达到MFT值
-                 */
-                else{
-                    //正常后检查
-                    if(this.btnCheckboxs[6].checked==true)
-                        this.counts+=5;
-                    if(this.btnCheckboxs[10].checked==true)
-                        this.counts+=5;
-                    //水位
-                    if(cgz6Data.result.parameters.drawdown>=-50&&
-                        cgz6Data.result.parameters.drawdown<=50){
-                        this.counts+=5;
-                    }
-                    //汽包上下壁温
-                    if(cgz6Data.result.parameters.WallTemperature<=50)
-                        this.counts+=5;
-                    //记录
-                    if(cgz6Data.result.inputTextarea[0]!=""&&
-                        cgz6Data.result.inputTextarea[3]!="")
-                        this.counts+=5;
-                    if(cgz6Data.result.inputTextarea[1]!=""&&
-                        cgz6Data.result.inputTextarea[4]!="")
-                        this.counts+=5;
-                    if(cgz6Data.result.inputTextarea[2]!=""&&
-                        cgz6Data.result.inputTextarea[5]!="")
-                        this.counts+=5;
-                    //空气阀
-                    if(cgz6Data.result.parameters.pressure==0.26)
-                    for(var i=0;i<this.assemblys.length;i++){
-                            if(this.assemblys[i].airValve==false){
-                                this.counts+=5;
-                                break;
-                            }
-                        };
-                    if(cgz6Data.result.parameters.pressure==0.3){
-                        if(this.btnCheckboxs[0].checked==true&&
-                            this.btnCheckboxs[13].checked==true)
-                            this.counts+=5;
-                    }
-                    if(cgz6Data.result.parameters.pressure==0.5){
-                        if(this.btnCheckboxs[2].checked==true&&
-                            this.btnCheckboxs[3].checked==true)
-                            this.counts+=5;
-                    }
-                    //关闭疏水阀
-                    if(cgz6Data.result.parameters.pressure==1){
-                        for(var i=0;i<this.assemblys.length;i++)
-                        if(this.assemblys[i].trap==false||
-                        this.btnCheckboxs[4].checked==true){
-                            this.counts+=5;
-                            break;
-                        }
-                    }
-                    if(cgz6Data.result.parameters.pressure==3){
-                        if(this.continuousBlowdown==true){
-                            this.counts+=5;
-                        }
-                    }
-                    if(cgz6Data.result.parameters.pressure==4.5){
-                        if(this.btnCheckboxs[0].checked==true)
-                            this.counts+=5;
-                    }
-                    if(this.radioOilgun==false){
-                        this.counts+=5;
-                    }
+           氧量
+            */
+                this.O2=Math.floor((20*((this.Af1/48)*(44/this.B)))*100)/100;
+                if(this.O2<=0||this.B==0){
+                    this.O2=0;
                 }
-            }
-            //点火前检查
-            if(this.btnCheckboxs[5].checked==true){
-                this.counts+=5;
-            }
-            if(this.btnCheckboxs[9].checked==true){
-                this.counts+=5;
-            }
-            this.score="-"+(100-this.counts);
+                if(this.Af1<=0){
+                    this.Combustionregulationsystem[2].systemUrl="images/cgz6-part15.png";
+                }else if(this.Af1>0){
+                    this.Combustionregulationsystem[2].systemUrl="images/cgz6-part-green15.png";
 
-console.log(this.counts)
-        },
-        /*
-        判定
-         */
-        deleteDetermine:function () {
-            for(var i=0;i<this.inputTextarea.length;i++){
-                if(this.inputTextarea[i].inputText!=""){
-                    this.assemblyConfirmNum=1;
                 }
-            };
-            for(var i=0;i<this.assemblys.length;i++){
-                if(this.assemblys[i].airValve!=true||
-                    this.assemblys[i].trap!=true){
-                    this.assemblyConfirmNum=1;
+                if(this.radioHotpart==true){
+                    this.P=Math.floor(this.h*(this.Af1/48-this.Af2/63+this.B/44)*100)/100;
                 }
-            };
-                if(this.checkboxSelct!=[]||
-                    this.continuousBlowdown!=false||
-                    this.radioMillFan2!=false||
-                    this.radioHotpart!=false){
-                    this.assemblyConfirmNum=1;
-                }
-        },
-        /*
-        取消或关闭dialog清空内容（没有点击确定）
-         */
-        deleteContent:function () {
-            this.dialogAssembly=false;
-            this.dialogmillFan1=false;
-            this.dialogHotpart=false;
-            if(this.assemblyConfirmNum==0){
-                this.checkboxSelct=[];
-                this.continuousBlowdown=false;
-                for(var i=0;i<this.inputTextarea.length;i++){
-                    this.inputTextarea[i].inputText="";
-                }
-                this.radioMillFan2=false;
-                this.radioHotpart=false;
-                for(var i=0;i<this.assemblys.length;i++){
-                    this.assemblys[i].airValve=true;
-                    this.assemblys[i].trap=true;
+
+            }
+            /*
+            引风机
+             */
+            if(val==7){
+                this.Af2=Math.floor((this.Af2-0.05)*100)/100;
+                this.Yinfens=this.Af2*80+"px";
+                if(this.Af2<0){
+                    this.Af2=0;
+                    this.Yinfens=0+"px";
                 }
             }
-        },
-        /*
-        取消关闭dialog
-         */
-        assemblyDisConfirms:function () {
-            this.deleteContent();
+            if(val==8){
+                this.Af2=Math.floor((this.Af2+0.05)*100)/100;
+                this.Yinfens=this.Af2*80+"px";
+                if(this.Af2>1){
+                    this.Af2=1;
+                    this.Yinfens=80+"px";
+                }
+            }
+            if(val==7||val==8){
+                this.P=Math.floor((this.h*(this.Af1/48-this.Af2/63+this.B/44))*100)/100;
+                if(this.Af2<=0){
+                    this.Combustionregulationsystem[3].systemUrl="images/cgz6-part16.png";
+                }else if(this.Af2>0){
+                    this.Combustionregulationsystem[3].systemUrl="images/cgz6-part-green16.png";
 
-        },
-        /*
-        关闭dialog
-         */
-        handleClose:function () {
-            this.deleteContent();
+                }
+
+            }
+            /*
+            给水
+             */
+            if(val==9){
+                this.f=Math.floor((this.f-0.05)*100)/100;
+                this.Feedwaters=this.f*80+"px";
+                if(this.f<0){
+                    this.f=0;
+                    this.Feedwaters=0+"px";
+                }
+            }
+            if(val==10){
+                this.f=Math.floor((this.f+0.05)*100)/100;
+                this.Feedwaters=this.f*80+"px";
+                if(this.f>1){
+                    this.f=1;
+                    this.Feedwaters=80+"px";
+                }
+            }
+            if(val==9||val==10){
+                if(this.FeedwaterNumbe<=0){
+                    this.feedwater.feedwaterUrl="images/cgz6-part-red17.png";
+                }else if(this.FeedwaterNumbe>0){
+                    this.feedwater.feedwaterUrl="images/cgz6-part17.png";
+
+                }
+                if(this.radioHotpart==true){
+                    this.$message({
+                        message:'水位将达到：'+H+'mm',
+                        type:'info',
+                        duration:5000,
+                        showClose:true,
+                    });
+                    this.D=Math.floor(this.Q/this.Ht*100)/100;
+                    this.G=Math.floor((210*this.f)*100)/100;
+                    H=Math.floor((this.a*(this.G-this.D)- this.b*this.Pz/9.8)*100)/100;
+                }
+            }
+            /*
+            汽包壁温
+             */
+            if(val==11){
+                this.QAf=Math.floor((this.QAf-1)*100)/100;
+                this.wallWidth=(this.QAf-10)*8+"px";
+                if(this.QAf<10){
+                    this.QAf=10;
+                    this.wallWidth=0+"px";
+                }
+            }
+            if(val==12){
+                this.QAf=Math.floor((this.QAf+1)*100)/100;
+                this.wallWidth=(this.QAf-10)*8+"px";
+                if(this.QAf>20){
+                    this.QAf=20;
+                    this.wallWidth=80+"px";
+                }
+            }
+            if(val==11||val==12){
+                if(this.radioHotpart==true){
+                    clearInterval(QiBao);
+                    this.QT=Math.floor((10*this.D/this.QAf)*100)/100;
+                    if(this.QT>50){
+                        this.score+="-5,";
+                    }
+                }
+            }
+
         },
 
     }

@@ -1,32 +1,42 @@
-﻿/*@media (min-width: 1024px) {html{font-size: 18px}}
-@media (min-width: 1100px) {html{font-size: 20px}}
-@media (min-width: 1280px) {html{font-size: 22px;}}
-@media (min-width: 1366px) {html{font-size: 24px;}}
-@media (min-width: 1440px) {html{font-size: 25px !important;}}
-@media (min-width: 1680px) {html{font-size: 28px;}}
-@media (min-width: 1920px) {html{font-size: 33px;}}*/
+﻿
 html,
-body {margin: 0;width: 100%;overflow: auto}
-.navFixation{
-    position: fixed;
-    top: 0;
-    z-index: 1;
+body {margin: 0;width: 100%;overflow: auto;margin:0 auto;}
+h1{
+    text-align: center;
+    margin: 0 0 40px 0px;
 }
-.inputOne .el-input__inner,.inputOne .el-input-group__prepend,.inputOne .el-input-group__append{
-    background-color: #4472c4;
-    color: white;
-}
-.inputTwo .el-input__inner,.inputTwo .el-input-group__prepend,.inputTwo .el-input-group__append{
-    background-color: #cfd5ea;
-    color: black;
+#cgz6{
+    width: 1000px;
+    margin: 0 auto;
 }
 
+table{
+    margin: 0 auto;
+    background-color: white;
+}
+.firstTr{
+    height: 30px;
+    background-color: #409EFF;
+    color: white;
+}
+.tdFont{
+    height: 30px;
+    font-weight: bold;
+    width: 96px;
+}
+.tdFont1{
+    font-weight: bold;
+    width: 90px;
+}
+td span{
+    float: right;
+}
+.secondTr{
+    background-color: #8cc5ff;
+}
 .gumposition{
-    position: fixed;
-    z-index: 1;
-    top: 200px;
     width: 200px;
-    height: 140px;
+    height: 230px;
     border: #929292 solid 1px;
 
 }
@@ -34,11 +44,12 @@ body {margin: 0;width: 100%;overflow: auto}
     background-color: #4472c4;
     color:white;
 }
-.content{
-    margin: 100px auto;
+.main{
+    margin: 0 auto;
+    border: 2px solid rgb(204, 204, 204);
 }
 .FuelAerobics{
-    position: relative;
+ position: relative;
 }
 .FuelAerobicsFont{
     position: absolute;
@@ -50,8 +61,6 @@ body {margin: 0;width: 100%;overflow: auto}
     margin:20px 20px;
 }
 .changeTime{
-    position: fixed;
-    z-index: 2;
     top:350px;
 }
 #times{
@@ -59,29 +68,46 @@ body {margin: 0;width: 100%;overflow: auto}
     font-size: 24px;
 }
 .charts{
-    position: absolute;
-    left: 700px;
-
+    position: relative;
+    margin-left: 200px;
 }
-.portal,.gasWaterComboImg{
+.wendu{
+    color:#da70d6;
+    font-size: 12px;
+    transform: rotate(-15deg);
+    position: absolute;
+    top: 130px;left: 250px;
+}
+.Pa{
+    color:#32cd32;
+    font-size: 12px;
+    transform: rotate(-15deg);
+    position: absolute;
+    top: 180px;left: 250px;
+}
+#portal{
+    margin: 0 auto;
+}
+#portal,.gasWaterComboImg{
     position: relative;
 }
-.gasWaters{
-    margin: 30px auto;
-    width: 1000px;
-    height: 632px;
+.hotblack{
+    background-color: black;
 }
-.hotCombos{
-    margin:0 auto;
-    width: 996px;
-    height: 471px;
-    position: relative;
+.hotred{
+    background-color: #ff0000;
 }
-.systems,.doubleImg,.assemblyImg,.hotpartImg,.inletValveImg,.blueBtnImg,.FuelAerobicIMG,.feedwater{
+.hotpic{
     position: absolute;
 }
-.systems:hover,.doubleImg:hover,.assemblyImg:hover,.feedwater:hover,.hotpartImg:hover,.inletValveImg:hover,.blueBtnImg:hover,.FuelAerobicIMG:hover{
-    background-color: #5daf34;
+.systems,.doubleImg,.assemblyImg,.hotpartImg,.inletValveImg
+,.blueBtnImg,.FuelAerobicIMG,.feedwater{
+    position: absolute;
+}
+.systems:hover,.doubleImg:hover
+,.assemblyImg:hover,.feedwater:hover,.hotpartImg:hover
+,.inletValveImg:hover,.blueBtnImg:hover,.FuelAerobicIMG:hover
+,.divBtn:hover,.hot1:hover{
     cursor:pointer;
 }
 .dialogTitles{
@@ -89,4 +115,84 @@ body {margin: 0;width: 100%;overflow: auto}
     border-bottom: #6f7180 1px solid;
     color: #e87822;
 }
+.systemBtn{
+    width: 400px;
+    height: 73px;
+    text-align: center;
+    margin: 20px auto ;
+}
+.divBtn{
+    margin: 0 10px;
+    float: left;
+}
+#hotyou{
+    position: absolute;
+    top:160px;
+}
+.hot1{
+    float: left;
+    margin:0 8px;
+}
+.btn,.hotOpen{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin: 0 auto;
+    background: #ff0000;
+}
+ .ons,.openColor,.closeColor{
+    background: #00ff00;
+}
+ /*
+ 阀门调节
+  */
+.decrease,.rease{
+    width: 24px;
+    height: 24px;
+    cursor:pointer;
+    background-color: black;
+    line-height: 24px;
+    color: white;
+    border: none;
+}
+.colortitle{
+    color:#e77923 ;
+}
+#decreaseNumber,#temperatureNumber
+,#FeedwaterNumbe,#SongfenNumber,#YfanpartNumbe
+,#WallTemperatureNumber{
+    position: relative;
+    height: 24px;
+    background-color: #00fa00;
 
+}
+#decreasebg,#temperaturebg,#Sfanpartbg,#Yfanpartbg
+,#Songfenbg,#Feedwaterbg,#WallTemperaturebg {
+    display: inline-block;
+    border: none;
+    width: 80px;
+    height: 24px;
+    background-color:red;
+}
+.decreaseNumberfont,.temperatureNumberfont
+,.YfanpartNumbefont,.SongfenNumberfont
+,.FeedwaterNumbefont,.WallTemperaturefont{
+    color: white;
+    position: absolute;
+    top: 0;left: 30px;
+}
+.confirms{
+    width: 105px;
+    height: 35px;
+    margin: 0 5px;
+    border: none;
+    background: url('../images/examBtn.gif');
+    color: #faff78;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    background-size: cover;
+}
+.confirms:hover{
+    color: #faff78;
+}
